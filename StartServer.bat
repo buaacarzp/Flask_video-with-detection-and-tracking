@@ -1,0 +1,1 @@
+python "./app.py"  -p "./mobilenet_/MobileNetSSD_deploy.prototxt"  -m "./mobilenet_/MobileNetSSD_deploy.caffemodel"  -v"./input/cat.mp4" -l "person" -o "./output/cat_output.avi" -c "0.9"
