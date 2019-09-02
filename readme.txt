@@ -1,10 +1,13 @@
-Csharp_kehuduan.py: client
-flask-video-streaming-master/app.py :server
--------
-this version  Put the two modules  together between camera_opencv.py and app.py.
-because the global start x cound't transform to the camera_opencv.py, even though I try to 
-set  the start x be global ,and try to use the "from app import start x" , but it didn't wok will.
-so,this version can be tested well, but the detection should transform the counts of the boxes 
-and the image together,it will be done tomorrow.
-------- 
-run the python call.py start the server 
+该份工程是实现一个：
+将目标检测和目标跟踪与流媒体融合的一个项目，主要是先执行目标检测，将目标检测的结果给目标跟踪，之后将目标跟踪的视频流传入到Web端，多用户都可以调用摄像头以及查看跟踪的结果。
+1.本项目的环境是python3.6 windows10
+2.项目依赖库除了一些基本的库之外还需要下个dlib库，目标跟踪DSST算法用的就是这个库中的方法。
+3.本功能对应的有客户端C#编写的代码，随后再上传。
+下面主要介绍本工程各个文件的作用：
+1) 环境配置好后，启动服务器：执行call.py ，因为我已经将所需要的参数打包好了，直接执行后就会传递给控制台。
+2) app.py就是服务器的主要代码，base_camera.py中封装了一个base_camera的类主要实现的是对视频流的控制。
+3)templates中的index.html就是一个网页的雏形，用于展示。
+4)Csharp_kehuduan.py就是模拟的C#编写的客户端的一个脚本，你可以模拟目标检测，随后再fileimage中会存储服务器传回来的检测结果;随后你需要选取检测结果中的box，如果你想跟踪box0 或者box1等中的一个，你需要请求服务器，服务器的接口是2还是4我也懒得看了，一看就懂;之后再请求4或者2我懒得看了，执行跟踪模块。
+tips:
+用python模拟客户端的时候一定要传box哦。
+
